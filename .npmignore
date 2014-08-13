@@ -1,0 +1,13 @@
+.git*
+.project
+.jshintrc
+.jsdoc.json
+.settings
+.travis.yml
+.DS_Store
+index.js
+Gruntfile.js
+examples/
+module/
+lib/
+test/
