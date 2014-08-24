@@ -2,7 +2,7 @@
 
 [![NPM version](https://badge.fury.io/js/transfer-rate.svg)](http://badge.fury.io/js/transfer-rate)
 [![Build Status](https://travis-ci.org/hex7c0/transfer-rate.svg?branch=master)](https://travis-ci.org/hex7c0/transfer-rate)
-[![devDependency Status](https://david-dm.org/hex7c0/transfer-rate/dev-status.svg)](https://david-dm.org/hex7c0/transfer-rate#info=devDependencies)
+[![Dependency Status](https://david-dm.org/hex7c0/transfer-rate/status.svg)](https://david-dm.org/hex7c0/transfer-rate)
 
 Calculate transfer-rate of request/response with different option for customization.
 Build a function that, calculate ratio between data and time.
