@@ -30,7 +30,7 @@ app.get('/', function(req, res) {
     var start = process.hrtime();
     rate(req, start);
     res.sendFile(require('path').resolve('a.pdf'));
-    req.socket.once('finish', function() {
+    req.socket.once('close', function() {
 
         if (req.transferRate) {
             console.log(req.transferRate);

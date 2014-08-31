@@ -4,14 +4,10 @@
  * @module transfer-rate
  * @package transfer-rate
  * @subpackage main
- * @version 0.0.1
+ * @version 1.0.0
  * @author hex7c0 <hex7c0@gmail.com>
  * @copyright hex7c0 2014
  * @license GPLv3
- */
-
-/*
- * initialize module
  */
 
 /*
@@ -138,13 +134,13 @@ function wrapper(my) {
          */
         function cleanup() {
 
-            soc.removeListener('finish', finish);
+            // soc.removeListener('finish', finish);
             soc.removeListener('close', close);
             return;
         }
 
-        soc.on('close', close);
-        soc.once('finish', finish);
+        soc.once('close', finish);
+        // soc.once('finish', finish);
         return;
     };
 }
