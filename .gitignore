@@ -3,6 +3,7 @@
 .project
 .settings
 .jshintrc
+tmp
 
 # Logs
 logs
@@ -32,4 +33,3 @@ node_modules
 
 # Bower directory
 bower_components
-
