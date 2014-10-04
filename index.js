@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 /**
  * @file transfer-rate main
  * @module transfer-rate
