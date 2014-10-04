@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 /**
  * @file chunk example
  * @module transfer-rate
