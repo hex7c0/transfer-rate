@@ -37,7 +37,8 @@ function wrapper(my) {
         diff = diff[0] * 1e9 + diff[1]; // nanosecond
         var data = (req._bytesDispatched * my.byte) / my.misura;
         if (clean) {
-            first = new Array(2), story._bytesDispatched = 0;
+            first = new Array(2);
+            story._bytesDispatched = 0;
         }
         return (data / (diff / my.time)).toFixed(1) + my.out;
     }
@@ -57,7 +58,8 @@ function wrapper(my) {
         diff = diff[0] * 1e9 + diff[1]; // nanosecond
         var data = (req.bytesRead * my.byte) / my.misura;
         if (clean) {
-            first = new Array(2), story.bytesRead = 0;
+            first = new Array(2);
+            story.bytesRead = 0;
         }
         return (data / (diff / my.time)).toFixed(1) + my.out;
     }
@@ -66,7 +68,8 @@ function wrapper(my) {
     if (!my.response) {
         oi = request;
     }
-    var first = new Array(2), story = {
+    var first = new Array(2);
+    var story = {
         _bytesDispatched: 0,
         bytesRead: 0
     };
@@ -81,7 +84,7 @@ function wrapper(my) {
      */
     return function rate(req, start) {
 
-        if (!req || !typeof (req) == 'object') {
+        if (!req || typeof (req) != 'object') {
             throw new TypeError('req required');
         }
         if (!start || !Array.isArray(start)) {
@@ -94,7 +97,8 @@ function wrapper(my) {
 
         // single
         if (res._headerSent) {
-            return req.transferRate = oi(req.socket, first);
+            req.transferRate = oi(req.socket, first);
+            return req.transferRate;
         }
 
         // chunk
@@ -122,7 +126,8 @@ function wrapper(my) {
             if (first[1]) {
                 story._bytesDispatched += soc._bytesDispatched;
                 story.bytesRead += soc.bytesRead;
-                return req.transferRate = oi(story, first, true);
+                req.transferRate = oi(story, first, true);
+                return req.transferRate;
             }
             return;
         }
@@ -150,12 +155,12 @@ function wrapper(my) {
  * 
  * @exports transfer
  * @function transfer
- * @param {Object} options - various options. Check README.md
+ * @param {Object} opt - various options. Check README.md
  * @return {Object}
  */
-module.exports = function transfer(options) {
+function transfer(opt) {
 
-    var options = options || Object.create(null);
+    var options = opt || Object.create(null);
     var my = {
         misura: 1024,
         byte: 1,
@@ -210,13 +215,14 @@ module.exports = function transfer(options) {
         my.out += '/s';
     }
 
-    if (options.response == false) {
+    if (options.response === false) {
         my.response = false;
     }
 
-    if (options.output == false) {
+    if (options.output === false) {
         my.out = '';
     }
 
     return wrapper(my);
-};
+}
+module.exports = transfer;
