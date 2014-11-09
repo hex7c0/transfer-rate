@@ -96,7 +96,8 @@ function wrapper(my) {
         }
 
         // single
-        if (res._headerSent) {
+        var t = res.finished || (res.socket && res.socket.writable === false);
+        if (t === true) {
             req.transferRate = oi(req.socket, first);
             return req.transferRate;
         }
