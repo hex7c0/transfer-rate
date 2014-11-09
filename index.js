@@ -84,10 +84,10 @@ function wrapper(my) {
      */
     return function rate(req, start) {
 
-        if (!req || typeof (req) != 'object') {
+        if (req === null || typeof (req) !== 'object') {
             throw new TypeError('req required');
         }
-        if (!start || !Array.isArray(start)) {
+        if (start === null || Array.isArray(start) === false) {
             throw new TypeError('start required');
         }
         var res = req.res;
