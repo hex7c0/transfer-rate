@@ -19,9 +19,6 @@ module.exports = function(grunt) {
         clean: [ 'index.min.js', 'min/**/*.js' ],
 
         uglify: {
-            options: {
-                preserveComments: 'false'
-            },
             target: {
                 files: [ {
                     expand: true,
