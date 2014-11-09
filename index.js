@@ -36,7 +36,7 @@ function wrapper(my) {
         var diff = process.hrtime(start);
         diff = diff[0] * 1e9 + diff[1]; // nanosecond
         var data = (req._bytesDispatched * my.byte) / my.misura;
-        if (clean) {
+        if (clean === true) {
             first = new Array(2);
             story._bytesDispatched = 0;
         }
@@ -57,7 +57,7 @@ function wrapper(my) {
         var diff = process.hrtime(start);
         diff = diff[0] * 1e9 + diff[1]; // nanosecond
         var data = (req.bytesRead * my.byte) / my.misura;
-        if (clean) {
+        if (clean === true) {
             first = new Array(2);
             story.bytesRead = 0;
         }
@@ -91,7 +91,7 @@ function wrapper(my) {
             throw new TypeError('start required');
         }
         var res = req.res;
-        if (!first[1]) {
+        if (first[1] === undefined) {
             first = start;
         }
 
@@ -124,7 +124,7 @@ function wrapper(my) {
         function finish() {
 
             cleanup();
-            if (first[1]) {
+            if (first[1] !== undefined) {
                 story._bytesDispatched += soc._bytesDispatched;
                 story.bytesRead += soc.bytesRead;
                 req.transferRate = oi(story, first, true);
