@@ -37,7 +37,7 @@ module.exports = function(grunt) {
         jshint: {
             options: {
                 curly: true,
-                indent: 4,
+                indent: 2,
                 quotmark: 'single',
                 undef: true,
                 unused: true,
