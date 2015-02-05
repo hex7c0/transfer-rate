@@ -35,11 +35,11 @@
     "supertest": "~0.15"
   },
   "engines": {
-    "node": "^0.10"
+    "node": ">=0.10"
   },
   "scripts": {
     "prepublish": "npm prune",
-    "test": "mocha --bail --check-leaks test/"
+    "test": "mocha --bail --check-leaks"
   },
   "license": "GPLv3"
 }
