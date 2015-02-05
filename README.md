@@ -1,8 +1,9 @@
 # [transfer-rate](http://supergiovane.tk/#/transfer-rate)
 
-[![NPM version](https://badge.fury.io/js/transfer-rate.svg)](http://badge.fury.io/js/transfer-rate)
-[![Build Status](https://travis-ci.org/hex7c0/transfer-rate.svg?branch=master)](https://travis-ci.org/hex7c0/transfer-rate)
-[![Dependency Status](https://david-dm.org/hex7c0/transfer-rate/status.svg)](https://david-dm.org/hex7c0/transfer-rate)
+[![NPM version](https://img.shields.io/npm/v/transfer-rate.svg)](https://www.npmjs.com/package/transfer-rate)
+[![Linux Status](https://img.shields.io/travis/hex7c0/transfer-rate.svg?label=linux)](https://travis-ci.org/hex7c0/transfer-rate)
+[![Windows Status](https://img.shields.io/appveyor/ci/hex7c0/transfer-rate.svg?label=windows)](https://ci.appveyor.com/project/hex7c0/transfer-rate)
+[![Dependency Status](https://img.shields.io/david/hex7c0/transfer-rate.svg)](https://david-dm.org/hex7c0/transfer-rate)
 
 Calculate transfer-rate of request/response with different option for customization.
 Build a function that, calculate ratio between data and time.
@@ -63,8 +64,8 @@ req.transferRate
 
 ## Examples
 
-Take a look at my [examples](https://github.com/hex7c0/transfer-rate/tree/master/examples)
+Take a look at my [examples](examples)
 
 For chunked data, wait for a fix with event emitter https://github.com/hex7c0/transfer-rate/tree/master/examples/chunk.js
 
-### [License GPLv3](http://opensource.org/licenses/GPL-3.0)
+### [License GPLv3](LICENSE)
