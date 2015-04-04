@@ -2,9 +2,8 @@
 /**
  * @file transfer-rate main
  * @module transfer-rate
- * @package transfer-rate
  * @subpackage main
- * @version 1.0.0
+ * @version 1.1.0
  * @author hex7c0 <hex7c0@gmail.com>
  * @copyright hex7c0 2014
  * @license GPLv3
@@ -84,20 +83,20 @@ function wrapper(my) {
    */
   return function rate(req, start) {
 
-    if (req === null || typeof (req) !== 'object') {
+    if (!req || typeof (req) !== 'object') {
       throw new TypeError('req required');
     }
-    if (start === null || Array.isArray(start) === false) {
+    if (!start || Array.isArray(start) === false) {
       throw new TypeError('start required');
     }
+
     var res = req.res;
-    if (first[1] === undefined) {
+    if (!first[1]) {
       first = start;
     }
 
     // single
-    var t = res.finished || (res.socket && res.socket.writable === false);
-    if (t === true) {
+    if (res.finished === true) {
       req.transferRate = oi(req.socket, first);
       return req.transferRate;
     }
@@ -124,7 +123,7 @@ function wrapper(my) {
     function finish() {
 
       cleanup();
-      if (first[1] !== undefined) {
+      if (first[1]) {
         story._bytesDispatched += soc._bytesDispatched;
         story.bytesRead += soc.bytesRead;
         req.transferRate = oi(story, first, true);
