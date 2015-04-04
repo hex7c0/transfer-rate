@@ -4,6 +4,7 @@
 [![Linux Status](https://img.shields.io/travis/hex7c0/transfer-rate.svg?label=linux)](https://travis-ci.org/hex7c0/transfer-rate)
 [![Windows Status](https://img.shields.io/appveyor/ci/hex7c0/transfer-rate.svg?label=windows)](https://ci.appveyor.com/project/hex7c0/transfer-rate)
 [![Dependency Status](https://img.shields.io/david/hex7c0/transfer-rate.svg)](https://david-dm.org/hex7c0/transfer-rate)
+[![Coveralls](https://img.shields.io/coveralls/hex7c0/transfer-rate.svg)](https://coveralls.io/r/hex7c0/transfer-rate)
 
 Calculate transfer-rate of request/response with different option for customization.
 Build a function that, calculate ratio between data and time.
@@ -30,9 +31,10 @@ var app = require('express')();
 var rate = transfer();
 
 app.get('/', function(req, res) {
-    var start = process.hrtime();
-    res.send('ok');
-    console.log(transfer(req, start));
+
+  var start = process.hrtime();
+  res.send('ok');
+  console.log(transfer(req, start));
 });
 ```
 
@@ -52,7 +54,7 @@ req.transferRate
  - `response` - **Boolean** Flag for calculate transfer rate of response(true) or request(false) *(default "response")*
  - `output` - **Boolean** Flag for display(true) extra information like `KB/s` or only data(false) *(default "display")*
 
-### rate(req,start) // calculator
+### rate(req, start) // calculator
 
 #### req
 
