@@ -24,22 +24,30 @@ describe('error', function() {
     it('should throw "req required". empty', function(done) {
 
       var rate = transfer();
-      try {
+      assert.throws(function() {
+
         rate();
-      } catch (err) {
-        assert.equal(err.message, 'req required');
-        done();
-      }
+      }, function(err) {
+
+        if ((err instanceof Error) && /req required/.test(err)) {
+          return true;
+        }
+      });
+      done();
     });
     it('should throw "req required". string', function(done) {
 
       var rate = transfer();
-      try {
+      assert.throws(function() {
+
         rate('foo');
-      } catch (err) {
-        assert.equal(err.message, 'req required');
-        done();
-      }
+      }, function(err) {
+
+        if ((err instanceof Error) && /req required/.test(err)) {
+          return true;
+        }
+      });
+      done();
     });
   });
 
@@ -48,22 +56,30 @@ describe('error', function() {
     it('should throw "start required". empty', function(done) {
 
       var rate = transfer();
-      try {
+      assert.throws(function() {
+
         rate({});
-      } catch (err) {
-        assert.equal(err.message, 'start required');
-        done();
-      }
+      }, function(err) {
+
+        if ((err instanceof Error) && /start required/.test(err)) {
+          return true;
+        }
+      });
+      done();
     });
     it('should throw "start required". string', function(done) {
 
       var rate = transfer();
-      try {
+      assert.throws(function() {
+
         rate({}, 'foo');
-      } catch (err) {
-        assert.equal(err.message, 'start required');
-        done();
-      }
+      }, function(err) {
+
+        if ((err instanceof Error) && /start required/.test(err)) {
+          return true;
+        }
+      });
+      done();
     });
   });
 

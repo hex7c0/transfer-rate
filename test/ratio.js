@@ -34,7 +34,7 @@ describe('ratio', function() {
     });
     request(app).get('/').expect(200).end(function(err, res) {
 
-      assert.equal(err, null);
+      assert.ifError(err);
     });
   });
   it('should return only ratio', function(done) {
@@ -52,7 +52,7 @@ describe('ratio', function() {
     });
     request(app).get('/').expect(200).end(function(err, res) {
 
-      assert.equal(err, null);
+      assert.ifError(err);
     });
   });
 
@@ -73,7 +73,7 @@ describe('ratio', function() {
       });
       request(app).get('/').expect(200).end(function(err, res) {
 
-        assert.equal(err, null);
+        assert.ifError(err);
       });
     });
     it('should return MB', function(done) {
@@ -91,7 +91,7 @@ describe('ratio', function() {
       });
       request(app).get('/').expect(200).end(function(err, res) {
 
-        assert.equal(err, null);
+        assert.ifError(err);
       });
     });
     it('should return bit', function(done) {
@@ -109,7 +109,7 @@ describe('ratio', function() {
       });
       request(app).get('/').expect(200).end(function(err, res) {
 
-        assert.equal(err, null);
+        assert.ifError(err);
       });
     });
     it('should return Kb', function(done) {
@@ -127,7 +127,7 @@ describe('ratio', function() {
       });
       request(app).get('/').expect(200).end(function(err, res) {
 
-        assert.equal(err, null);
+        assert.ifError(err);
       });
     });
     it('should return Mb', function(done) {
@@ -145,7 +145,7 @@ describe('ratio', function() {
       });
       request(app).get('/').expect(200).end(function(err, res) {
 
-        assert.equal(err, null);
+        assert.ifError(err);
       });
     });
     it('should return nanosecond', function(done) {
@@ -163,7 +163,7 @@ describe('ratio', function() {
       });
       request(app).get('/').expect(200).end(function(err, res) {
 
-        assert.equal(err, null);
+        assert.ifError(err);
       });
     });
     it('should return millisecond', function(done) {
@@ -181,7 +181,7 @@ describe('ratio', function() {
       });
       request(app).get('/').expect(200).end(function(err, res) {
 
-        assert.equal(err, null);
+        assert.ifError(err);
       });
     });
   });
@@ -204,7 +204,7 @@ describe('ratio', function() {
       });
       request(app).get('/').expect(200).end(function(err, res) {
 
-        assert.equal(err, null);
+        assert.ifError(err);
       });
     });
     it('should return MB', function(done) {
@@ -223,7 +223,7 @@ describe('ratio', function() {
       });
       request(app).get('/').expect(200).end(function(err, res) {
 
-        assert.equal(err, null);
+        assert.ifError(err);
       });
     });
     it('should return bit', function(done) {
@@ -242,7 +242,7 @@ describe('ratio', function() {
       });
       request(app).get('/').expect(200).end(function(err, res) {
 
-        assert.equal(err, null);
+        assert.ifError(err);
       });
     });
     it('should return Kb', function(done) {
@@ -261,7 +261,7 @@ describe('ratio', function() {
       });
       request(app).get('/').expect(200).end(function(err, res) {
 
-        assert.equal(err, null);
+        assert.ifError(err);
       });
     });
     it('should return Mb', function(done) {
@@ -280,7 +280,7 @@ describe('ratio', function() {
       });
       request(app).get('/').expect(200).end(function(err, res) {
 
-        assert.equal(err, null);
+        assert.ifError(err);
       });
     });
     it('should return nanosecond', function(done) {
@@ -299,7 +299,7 @@ describe('ratio', function() {
       });
       request(app).get('/').expect(200).end(function(err, res) {
 
-        assert.equal(err, null);
+        assert.ifError(err);
       });
     });
     it('should return millisecond', function(done) {
@@ -318,7 +318,7 @@ describe('ratio', function() {
       });
       request(app).get('/').expect(200).end(function(err, res) {
 
-        assert.equal(err, null);
+        assert.ifError(err);
       });
     });
   });
