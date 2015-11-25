@@ -1,4 +1,4 @@
-# [transfer-rate](http://supergiovane.tk/#/transfer-rate)
+# [transfer-rate](https://github.com/hex7c0/transfer-rate)
 
 [![NPM version](https://img.shields.io/npm/v/transfer-rate.svg)](https://www.npmjs.com/package/transfer-rate)
 [![Linux Status](https://img.shields.io/travis/hex7c0/transfer-rate.svg?label=linux)](https://travis-ci.org/hex7c0/transfer-rate)
