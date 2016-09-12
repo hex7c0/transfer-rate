@@ -3,7 +3,7 @@
  * @file transfer-rate main
  * @module transfer-rate
  * @subpackage main
- * @version 1.1.0
+ * @version 1.2.0
  * @author hex7c0 <hex7c0@gmail.com>
  * @copyright hex7c0 2014
  * @license GPLv3
