@@ -51,6 +51,38 @@ describe('error', function() {
     });
   });
 
+  describe('res', function() {
+
+    it('should throw "res required". empty', function(done) {
+
+      var rate = transfer();
+      assert.throws(function() {
+
+        rate({});
+      }, function(err) {
+
+        if ((err instanceof Error) && /res required/.test(err)) {
+          return true;
+        }
+      });
+      done();
+    });
+    it('should throw "res required". string', function(done) {
+
+      var rate = transfer();
+      assert.throws(function() {
+
+        rate({}, 'foo');
+      }, function(err) {
+
+        if ((err instanceof Error) && /res required/.test(err)) {
+          return true;
+        }
+      });
+      done();
+    });
+  });
+
   describe('start', function() {
 
     it('should throw "start required". empty', function(done) {
@@ -58,7 +90,7 @@ describe('error', function() {
       var rate = transfer();
       assert.throws(function() {
 
-        rate({});
+        rate({}, {});
       }, function(err) {
 
         if ((err instanceof Error) && /start required/.test(err)) {
@@ -72,7 +104,7 @@ describe('error', function() {
       var rate = transfer();
       assert.throws(function() {
 
-        rate({}, 'foo');
+        rate({}, {}, 'foo');
       }, function(err) {
 
         if ((err instanceof Error) && /start required/.test(err)) {

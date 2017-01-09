@@ -15,6 +15,7 @@ var transfer = require('..');
 var express = require('express');
 var request = require('supertest');
 var assert = require('assert');
+var finished = require('on-finished');
 
 /*
  * test module
@@ -29,7 +30,7 @@ describe('ratio', function() {
 
       var start = process.hrtime();
       res.send('ok');
-      assert.ok(/^[0-9]*.[0-9]? KB\/s$/.test(rate(req, start)));
+      assert.ok(/^[0-9]*.[0-9]{0,2} KB\/s$/.test(rate(req, res, start)));
       done();
     });
     request(app).get('/').expect(200).end(function(err, res) {
@@ -47,7 +48,7 @@ describe('ratio', function() {
 
       var start = process.hrtime();
       res.send('ok');
-      assert.ok(/^[0-9]*.[0-9]?$/.test(rate(req, start)));
+      assert.ok(/^[0-9]*.[0-9]{0,2}$/.test(rate(req, res, start)));
       done();
     });
     request(app).get('/').expect(200).end(function(err, res) {
@@ -68,7 +69,7 @@ describe('ratio', function() {
 
         var start = process.hrtime();
         res.send('ok');
-        assert.ok(/ Byte/.test(rate(req, start)));
+        assert.ok(/ Byte/.test(rate(req, res, start)));
         done();
       });
       request(app).get('/').expect(200).end(function(err, res) {
@@ -86,7 +87,7 @@ describe('ratio', function() {
 
         var start = process.hrtime();
         res.send('ok');
-        assert.ok(/ MB/.test(rate(req, start)));
+        assert.ok(/ MB/.test(rate(req, res, start)));
         done();
       });
       request(app).get('/').expect(200).end(function(err, res) {
@@ -104,7 +105,7 @@ describe('ratio', function() {
 
         var start = process.hrtime();
         res.send('ok');
-        assert.ok(/ bit/.test(rate(req, start)));
+        assert.ok(/ bit/.test(rate(req, res, start)));
         done();
       });
       request(app).get('/').expect(200).end(function(err, res) {
@@ -122,7 +123,7 @@ describe('ratio', function() {
 
         var start = process.hrtime();
         res.send('ok');
-        assert.ok(/ Kb/.test(rate(req, start)));
+        assert.ok(/ Kb/.test(rate(req, res, start)));
         done();
       });
       request(app).get('/').expect(200).end(function(err, res) {
@@ -140,7 +141,7 @@ describe('ratio', function() {
 
         var start = process.hrtime();
         res.send('ok');
-        assert.ok(/ Mb/.test(rate(req, start)));
+        assert.ok(/ Mb/.test(rate(req, res, start)));
         done();
       });
       request(app).get('/').expect(200).end(function(err, res) {
@@ -158,7 +159,7 @@ describe('ratio', function() {
 
         var start = process.hrtime();
         res.send('ok');
-        assert.ok(/\/ns/.test(rate(req, start)));
+        assert.ok(/\/ns/.test(rate(req, res, start)));
         done();
       });
       request(app).get('/').expect(200).end(function(err, res) {
@@ -176,7 +177,7 @@ describe('ratio', function() {
 
         var start = process.hrtime();
         res.send('ok');
-        assert.ok(/\/ms/.test(rate(req, start)));
+        assert.ok(/\/ms/.test(rate(req, res, start)));
         done();
       });
       request(app).get('/').expect(200).end(function(err, res) {
@@ -199,8 +200,13 @@ describe('ratio', function() {
 
         var start = process.hrtime();
         res.send('ok');
-        assert.ok(/ Byte/.test(rate(req, start)));
-        done();
+        finished(req, function(err) {
+
+          if (!err) {
+            assert.ok(/ Byte/.test(rate(req, res, start)));
+            done();
+          }
+        });
       });
       request(app).get('/').expect(200).end(function(err, res) {
 
@@ -218,8 +224,13 @@ describe('ratio', function() {
 
         var start = process.hrtime();
         res.send('ok');
-        assert.ok(/ MB/.test(rate(req, start)));
-        done();
+        finished(req, function(err) {
+
+          if (!err) {
+            assert.ok(/ MB/.test(rate(req, res, start)));
+            done();
+          }
+        });
       });
       request(app).get('/').expect(200).end(function(err, res) {
 
@@ -237,8 +248,13 @@ describe('ratio', function() {
 
         var start = process.hrtime();
         res.send('ok');
-        assert.ok(/ bit/.test(rate(req, start)));
-        done();
+        finished(req, function(err) {
+
+          if (!err) {
+            assert.ok(/ bit/.test(rate(req, res, start)));
+            done();
+          }
+        });
       });
       request(app).get('/').expect(200).end(function(err, res) {
 
@@ -256,8 +272,13 @@ describe('ratio', function() {
 
         var start = process.hrtime();
         res.send('ok');
-        assert.ok(/ Kb/.test(rate(req, start)));
-        done();
+        finished(req, function(err) {
+
+          if (!err) {
+            assert.ok(/ Kb/.test(rate(req, res, start)));
+            done();
+          }
+        });
       });
       request(app).get('/').expect(200).end(function(err, res) {
 
@@ -275,8 +296,13 @@ describe('ratio', function() {
 
         var start = process.hrtime();
         res.send('ok');
-        assert.ok(/ Mb/.test(rate(req, start)));
-        done();
+        finished(req, function(err) {
+
+          if (!err) {
+            assert.ok(/ Mb/.test(rate(req, res, start)));
+            done();
+          }
+        });
       });
       request(app).get('/').expect(200).end(function(err, res) {
 
@@ -294,8 +320,13 @@ describe('ratio', function() {
 
         var start = process.hrtime();
         res.send('ok');
-        assert.ok(/\/ns/.test(rate(req, start)));
-        done();
+        finished(req, function(err) {
+
+          if (!err) {
+            assert.ok(/\/ns/.test(rate(req, res, start)));
+            done();
+          }
+        });
       });
       request(app).get('/').expect(200).end(function(err, res) {
 
@@ -313,8 +344,13 @@ describe('ratio', function() {
 
         var start = process.hrtime();
         res.send('ok');
-        assert.ok(/\/ms/.test(rate(req, start)));
-        done();
+        finished(req, function(err) {
+
+          if (!err) {
+            assert.ok(/\/ms/.test(rate(req, res, start)));
+            done();
+          }
+        });
       });
       request(app).get('/').expect(200).end(function(err, res) {
 

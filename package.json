@@ -24,6 +24,7 @@
   },
   "main": "index.min.js",
   "dependencies": {
+    "on-finished": "2.3.0"
   },
   "devDependencies": {
     "express": "~4.14",
