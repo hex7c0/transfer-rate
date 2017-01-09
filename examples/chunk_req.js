@@ -1,6 +1,6 @@
 'use strict';
 /**
- * @file chunk example
+ * @file chunk with request example
  * @module transfer-rate
  * @subpackage examples
  * @version 0.0.1
@@ -13,22 +13,27 @@
  */
 var transfer = require('..'); // use require('transfer-rate') instead
 var app = require('express')();
+var finished = require('on-finished');
 
 // customization
-var rate = transfer();
+var rate = transfer({
+  response: false
+});
 
 // routing
 app.get('/', function(req, res) {
 
   var start = process.hrtime();
-  rate(req, start);
-  res.sendFile(require('path').resolve('a.pdf')); // "a.pdf" is a 12Mb file
-  req.socket.once('close', function() {
+  rate(req, res, start);
 
-    if (req.transferRate) {
+  res.setHeader('Content-Type', 'image/jpeg');
+  res.sendFile(require('path').resolve('2.jpg')); // "a.jpg" is a 2Mb file
+
+  finished(req, function(err) {
+
+    if (!err) {
       console.log(req.transferRate);
     }
-
   });
 }).listen(3000);
 console.log('starting "hello world" on port 3000');
