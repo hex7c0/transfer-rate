@@ -59,302 +59,822 @@ describe('ratio', function() {
 
   describe('response', function() {
 
-    it('should return Byte', function(done) {
+    describe('second', function() {
 
-      var app = express();
-      var rate = transfer({
-        data: 'Byte'
+      it('should return Byte', function(done) {
+
+        var app = express();
+        var rate = transfer({
+          data: 'Byte',
+          time: 'second'
+        });
+        app.get('/', function(req, res) {
+
+          var start = process.hrtime();
+          res.send('ok');
+          assert.ok(/ Byte\/s/.test(rate(req, res, start)));
+          done();
+        });
+        request(app).get('/').expect(200).end(function(err, res) {
+
+          assert.ifError(err);
+        });
       });
-      app.get('/', function(req, res) {
+      it('should return KB', function(done) {
 
-        var start = process.hrtime();
-        res.send('ok');
-        assert.ok(/ Byte/.test(rate(req, res, start)));
-        done();
+        var app = express();
+        var rate = transfer({
+          data: 'KB',
+          time: 'second'
+        });
+        app.get('/', function(req, res) {
+
+          var start = process.hrtime();
+          res.send('ok');
+          assert.ok(/ KB\/s/.test(rate(req, res, start)));
+          done();
+        });
+        request(app).get('/').expect(200).end(function(err, res) {
+
+          assert.ifError(err);
+        });
       });
-      request(app).get('/').expect(200).end(function(err, res) {
+      it('should return MB', function(done) {
 
-        assert.ifError(err);
+        var app = express();
+        var rate = transfer({
+          data: 'MB',
+          time: 'second'
+        });
+        app.get('/', function(req, res) {
+
+          var start = process.hrtime();
+          res.send('ok');
+          assert.ok(/ MB\/s/.test(rate(req, res, start)));
+          done();
+        });
+        request(app).get('/').expect(200).end(function(err, res) {
+
+          assert.ifError(err);
+        });
+      });
+      it('should return bit', function(done) {
+
+        var app = express();
+        var rate = transfer({
+          data: 'bit',
+          time: 'second'
+        });
+        app.get('/', function(req, res) {
+
+          var start = process.hrtime();
+          res.send('ok');
+          assert.ok(/ bit\/s/.test(rate(req, res, start)));
+          done();
+        });
+        request(app).get('/').expect(200).end(function(err, res) {
+
+          assert.ifError(err);
+        });
+      });
+      it('should return Kb', function(done) {
+
+        var app = express();
+        var rate = transfer({
+          data: 'Kb',
+          time: 'second'
+        });
+        app.get('/', function(req, res) {
+
+          var start = process.hrtime();
+          res.send('ok');
+          assert.ok(/ Kbit\/s/.test(rate(req, res, start)));
+          done();
+        });
+        request(app).get('/').expect(200).end(function(err, res) {
+
+          assert.ifError(err);
+        });
+      });
+      it('should return Mb', function(done) {
+
+        var app = express();
+        var rate = transfer({
+          data: 'Mb',
+          time: 'second'
+        });
+        app.get('/', function(req, res) {
+
+          var start = process.hrtime();
+          res.send('ok');
+          assert.ok(/ Mbit\/s/.test(rate(req, res, start)));
+          done();
+        });
+        request(app).get('/').expect(200).end(function(err, res) {
+
+          assert.ifError(err);
+        });
       });
     });
-    it('should return MB', function(done) {
 
-      var app = express();
-      var rate = transfer({
-        data: 'MB'
+    describe('millisecond', function() {
+
+      it('should return Byte', function(done) {
+
+        var app = express();
+        var rate = transfer({
+          data: 'Byte',
+          time: 'millisecond'
+        });
+        app.get('/', function(req, res) {
+
+          var start = process.hrtime();
+          res.send('ok');
+          assert.ok(/ Byte\/ms/.test(rate(req, res, start)));
+          done();
+        });
+        request(app).get('/').expect(200).end(function(err, res) {
+
+          assert.ifError(err);
+        });
       });
-      app.get('/', function(req, res) {
+      it('should return KB', function(done) {
 
-        var start = process.hrtime();
-        res.send('ok');
-        assert.ok(/ MB/.test(rate(req, res, start)));
-        done();
+        var app = express();
+        var rate = transfer({
+          data: 'KB',
+          time: 'millisecond'
+        });
+        app.get('/', function(req, res) {
+
+          var start = process.hrtime();
+          res.send('ok');
+          assert.ok(/ KB\/ms/.test(rate(req, res, start)));
+          done();
+        });
+        request(app).get('/').expect(200).end(function(err, res) {
+
+          assert.ifError(err);
+        });
       });
-      request(app).get('/').expect(200).end(function(err, res) {
+      it('should return MB', function(done) {
 
-        assert.ifError(err);
+        var app = express();
+        var rate = transfer({
+          data: 'MB',
+          time: 'millisecond'
+        });
+        app.get('/', function(req, res) {
+
+          var start = process.hrtime();
+          res.send('ok');
+          assert.ok(/ MB\/ms/.test(rate(req, res, start)));
+          done();
+        });
+        request(app).get('/').expect(200).end(function(err, res) {
+
+          assert.ifError(err);
+        });
+      });
+      it('should return bit', function(done) {
+
+        var app = express();
+        var rate = transfer({
+          data: 'bit',
+          time: 'millisecond'
+        });
+        app.get('/', function(req, res) {
+
+          var start = process.hrtime();
+          res.send('ok');
+          assert.ok(/ bit\/ms/.test(rate(req, res, start)));
+          done();
+        });
+        request(app).get('/').expect(200).end(function(err, res) {
+
+          assert.ifError(err);
+        });
+      });
+      it('should return Kb', function(done) {
+
+        var app = express();
+        var rate = transfer({
+          data: 'Kb',
+          time: 'millisecond'
+        });
+        app.get('/', function(req, res) {
+
+          var start = process.hrtime();
+          res.send('ok');
+          assert.ok(/ Kbit\/ms/.test(rate(req, res, start)));
+          done();
+        });
+        request(app).get('/').expect(200).end(function(err, res) {
+
+          assert.ifError(err);
+        });
+      });
+      it('should return Mb', function(done) {
+
+        var app = express();
+        var rate = transfer({
+          data: 'Mb',
+          time: 'millisecond'
+        });
+        app.get('/', function(req, res) {
+
+          var start = process.hrtime();
+          res.send('ok');
+          assert.ok(/ Mbit\/ms/.test(rate(req, res, start)));
+          done();
+        });
+        request(app).get('/').expect(200).end(function(err, res) {
+
+          assert.ifError(err);
+        });
       });
     });
-    it('should return bit', function(done) {
 
-      var app = express();
-      var rate = transfer({
-        data: 'bit'
+    describe('nanosecond', function() {
+
+      it('should return Byte', function(done) {
+
+        var app = express();
+        var rate = transfer({
+          data: 'Byte',
+          time: 'nanosecond'
+        });
+        app.get('/', function(req, res) {
+
+          var start = process.hrtime();
+          res.send('ok');
+          assert.ok(/ Byte\/ns/.test(rate(req, res, start)));
+          done();
+        });
+        request(app).get('/').expect(200).end(function(err, res) {
+
+          assert.ifError(err);
+        });
       });
-      app.get('/', function(req, res) {
+      it('should return KB', function(done) {
 
-        var start = process.hrtime();
-        res.send('ok');
-        assert.ok(/ bit/.test(rate(req, res, start)));
-        done();
+        var app = express();
+        var rate = transfer({
+          data: 'KB',
+          time: 'nanosecond'
+        });
+        app.get('/', function(req, res) {
+
+          var start = process.hrtime();
+          res.send('ok');
+          assert.ok(/ KB\/ns/.test(rate(req, res, start)));
+          done();
+        });
+        request(app).get('/').expect(200).end(function(err, res) {
+
+          assert.ifError(err);
+        });
       });
-      request(app).get('/').expect(200).end(function(err, res) {
+      it('should return MB', function(done) {
 
-        assert.ifError(err);
+        var app = express();
+        var rate = transfer({
+          data: 'MB',
+          time: 'nanosecond'
+        });
+        app.get('/', function(req, res) {
+
+          var start = process.hrtime();
+          res.send('ok');
+          assert.ok(/ MB\/ns/.test(rate(req, res, start)));
+          done();
+        });
+        request(app).get('/').expect(200).end(function(err, res) {
+
+          assert.ifError(err);
+        });
       });
-    });
-    it('should return Kb', function(done) {
+      it('should return bit', function(done) {
 
-      var app = express();
-      var rate = transfer({
-        data: 'Kb'
+        var app = express();
+        var rate = transfer({
+          data: 'bit',
+          time: 'nanosecond'
+        });
+        app.get('/', function(req, res) {
+
+          var start = process.hrtime();
+          res.send('ok');
+          assert.ok(/ bit\/ns/.test(rate(req, res, start)));
+          done();
+        });
+        request(app).get('/').expect(200).end(function(err, res) {
+
+          assert.ifError(err);
+        });
       });
-      app.get('/', function(req, res) {
+      it('should return Kb', function(done) {
 
-        var start = process.hrtime();
-        res.send('ok');
-        assert.ok(/ Kb/.test(rate(req, res, start)));
-        done();
+        var app = express();
+        var rate = transfer({
+          data: 'Kb',
+          time: 'nanosecond'
+        });
+        app.get('/', function(req, res) {
+
+          var start = process.hrtime();
+          res.send('ok');
+          assert.ok(/ Kbit\/ns/.test(rate(req, res, start)));
+          done();
+        });
+        request(app).get('/').expect(200).end(function(err, res) {
+
+          assert.ifError(err);
+        });
       });
-      request(app).get('/').expect(200).end(function(err, res) {
+      it('should return Mb', function(done) {
 
-        assert.ifError(err);
-      });
-    });
-    it('should return Mb', function(done) {
+        var app = express();
+        var rate = transfer({
+          data: 'Mb',
+          time: 'nanosecond'
+        });
+        app.get('/', function(req, res) {
 
-      var app = express();
-      var rate = transfer({
-        data: 'Mb'
-      });
-      app.get('/', function(req, res) {
+          var start = process.hrtime();
+          res.send('ok');
+          assert.ok(/ Mbit\/ns/.test(rate(req, res, start)));
+          done();
+        });
+        request(app).get('/').expect(200).end(function(err, res) {
 
-        var start = process.hrtime();
-        res.send('ok');
-        assert.ok(/ Mb/.test(rate(req, res, start)));
-        done();
-      });
-      request(app).get('/').expect(200).end(function(err, res) {
-
-        assert.ifError(err);
-      });
-    });
-    it('should return nanosecond', function(done) {
-
-      var app = express();
-      var rate = transfer({
-        time: 'nanosecond'
-      });
-      app.get('/', function(req, res) {
-
-        var start = process.hrtime();
-        res.send('ok');
-        assert.ok(/\/ns/.test(rate(req, res, start)));
-        done();
-      });
-      request(app).get('/').expect(200).end(function(err, res) {
-
-        assert.ifError(err);
-      });
-    });
-    it('should return millisecond', function(done) {
-
-      var app = express();
-      var rate = transfer({
-        time: 'millisecond'
-      });
-      app.get('/', function(req, res) {
-
-        var start = process.hrtime();
-        res.send('ok');
-        assert.ok(/\/ms/.test(rate(req, res, start)));
-        done();
-      });
-      request(app).get('/').expect(200).end(function(err, res) {
-
-        assert.ifError(err);
+          assert.ifError(err);
+        });
       });
     });
   });
 
   describe('request', function() {
 
-    it('should return Byte', function(done) {
+    describe('second', function() {
 
-      var app = express();
-      var rate = transfer({
-        data: 'Byte',
-        response: false
-      });
-      app.get('/', function(req, res) {
+      it('should return Byte', function(done) {
 
-        var start = process.hrtime();
-        res.send('ok');
-        finished(req, function(err) {
+        var app = express();
+        var rate = transfer({
+          data: 'Byte',
+          time: 'second',
+          response: false
+        });
+        app.get('/', function(req, res) {
 
-          if (!err) {
-            assert.ok(/ Byte/.test(rate(req, res, start)));
-            done();
-          }
+          var start = process.hrtime();
+          res.send('ok');
+          finished(req, function(err) {
+
+            if (!err) {
+              assert.ok(/ Byte\/s/.test(rate(req, res, start)));
+              done();
+            }
+          });
+        });
+        request(app).get('/').expect(200).end(function(err, res) {
+
+          assert.ifError(err);
         });
       });
-      request(app).get('/').expect(200).end(function(err, res) {
+      it('should return KB', function(done) {
 
-        assert.ifError(err);
+        var app = express();
+        var rate = transfer({
+          data: 'KB',
+          time: 'second',
+          response: false
+        });
+        app.get('/', function(req, res) {
+
+          var start = process.hrtime();
+          res.send('ok');
+          finished(req, function(err) {
+
+            if (!err) {
+              assert.ok(/ KB\/s/.test(rate(req, res, start)));
+              done();
+            }
+          });
+        });
+        request(app).get('/').expect(200).end(function(err, res) {
+
+          assert.ifError(err);
+        });
+      });
+      it('should return MB', function(done) {
+
+        var app = express();
+        var rate = transfer({
+          data: 'MB',
+          time: 'second',
+          response: false
+        });
+        app.get('/', function(req, res) {
+
+          var start = process.hrtime();
+          res.send('ok');
+          finished(req, function(err) {
+
+            if (!err) {
+              assert.ok(/ MB\/s/.test(rate(req, res, start)));
+              done();
+            }
+          });
+        });
+        request(app).get('/').expect(200).end(function(err, res) {
+
+          assert.ifError(err);
+        });
+      });
+      it('should return bit', function(done) {
+
+        var app = express();
+        var rate = transfer({
+          data: 'bit',
+          time: 'second',
+          response: false
+        });
+        app.get('/', function(req, res) {
+
+          var start = process.hrtime();
+          res.send('ok');
+          finished(req, function(err) {
+
+            if (!err) {
+              assert.ok(/ bit\/s/.test(rate(req, res, start)));
+              done();
+            }
+          });
+        });
+        request(app).get('/').expect(200).end(function(err, res) {
+
+          assert.ifError(err);
+        });
+      });
+      it('should return Kb', function(done) {
+
+        var app = express();
+        var rate = transfer({
+          data: 'Kb',
+          time: 'second',
+          response: false
+        });
+        app.get('/', function(req, res) {
+
+          var start = process.hrtime();
+          res.send('ok');
+          finished(req, function(err) {
+
+            if (!err) {
+              assert.ok(/ Kbit\/s/.test(rate(req, res, start)));
+              done();
+            }
+          });
+        });
+        request(app).get('/').expect(200).end(function(err, res) {
+
+          assert.ifError(err);
+        });
+      });
+      it('should return Mb', function(done) {
+
+        var app = express();
+        var rate = transfer({
+          data: 'Mb',
+          time: 'second',
+          response: false
+        });
+        app.get('/', function(req, res) {
+
+          var start = process.hrtime();
+          res.send('ok');
+          finished(req, function(err) {
+
+            if (!err) {
+              assert.ok(/ Mbit\/s/.test(rate(req, res, start)));
+              done();
+            }
+          });
+        });
+        request(app).get('/').expect(200).end(function(err, res) {
+
+          assert.ifError(err);
+        });
       });
     });
-    it('should return MB', function(done) {
 
-      var app = express();
-      var rate = transfer({
-        data: 'MB',
-        response: false
-      });
-      app.get('/', function(req, res) {
+    describe('millisecond', function() {
 
-        var start = process.hrtime();
-        res.send('ok');
-        finished(req, function(err) {
+      it('should return Byte', function(done) {
 
-          if (!err) {
-            assert.ok(/ MB/.test(rate(req, res, start)));
-            done();
-          }
+        var app = express();
+        var rate = transfer({
+          data: 'Byte',
+          time: 'millisecond',
+          response: false
+        });
+        app.get('/', function(req, res) {
+
+          var start = process.hrtime();
+          res.send('ok');
+          finished(req, function(err) {
+
+            if (!err) {
+              assert.ok(/ Byte\/ms/.test(rate(req, res, start)));
+              done();
+            }
+          });
+        });
+        request(app).get('/').expect(200).end(function(err, res) {
+
+          assert.ifError(err);
         });
       });
-      request(app).get('/').expect(200).end(function(err, res) {
+      it('should return KB', function(done) {
 
-        assert.ifError(err);
+        var app = express();
+        var rate = transfer({
+          data: 'KB',
+          time: 'millisecond',
+          response: false
+        });
+        app.get('/', function(req, res) {
+
+          var start = process.hrtime();
+          res.send('ok');
+          finished(req, function(err) {
+
+            if (!err) {
+              assert.ok(/ KB\/ms/.test(rate(req, res, start)));
+              done();
+            }
+          });
+        });
+        request(app).get('/').expect(200).end(function(err, res) {
+
+          assert.ifError(err);
+        });
+      });
+      it('should return MB', function(done) {
+
+        var app = express();
+        var rate = transfer({
+          data: 'MB',
+          time: 'millisecond',
+          response: false
+        });
+        app.get('/', function(req, res) {
+
+          var start = process.hrtime();
+          res.send('ok');
+          finished(req, function(err) {
+
+            if (!err) {
+              assert.ok(/ MB\/ms/.test(rate(req, res, start)));
+              done();
+            }
+          });
+        });
+        request(app).get('/').expect(200).end(function(err, res) {
+
+          assert.ifError(err);
+        });
+      });
+      it('should return bit', function(done) {
+
+        var app = express();
+        var rate = transfer({
+          data: 'bit',
+          time: 'millisecond',
+          response: false
+        });
+        app.get('/', function(req, res) {
+
+          var start = process.hrtime();
+          res.send('ok');
+          finished(req, function(err) {
+
+            if (!err) {
+              assert.ok(/ bit\/ms/.test(rate(req, res, start)));
+              done();
+            }
+          });
+        });
+        request(app).get('/').expect(200).end(function(err, res) {
+
+          assert.ifError(err);
+        });
+      });
+      it('should return Kb', function(done) {
+
+        var app = express();
+        var rate = transfer({
+          data: 'Kb',
+          time: 'millisecond',
+          response: false
+        });
+        app.get('/', function(req, res) {
+
+          var start = process.hrtime();
+          res.send('ok');
+          finished(req, function(err) {
+
+            if (!err) {
+              assert.ok(/ Kbit\/ms/.test(rate(req, res, start)));
+              done();
+            }
+          });
+        });
+        request(app).get('/').expect(200).end(function(err, res) {
+
+          assert.ifError(err);
+        });
+      });
+      it('should return Mb', function(done) {
+
+        var app = express();
+        var rate = transfer({
+          data: 'Mb',
+          time: 'millisecond',
+          response: false
+        });
+        app.get('/', function(req, res) {
+
+          var start = process.hrtime();
+          res.send('ok');
+          finished(req, function(err) {
+
+            if (!err) {
+              assert.ok(/ Mbit\/ms/.test(rate(req, res, start)));
+              done();
+            }
+          });
+        });
+        request(app).get('/').expect(200).end(function(err, res) {
+
+          assert.ifError(err);
+        });
       });
     });
-    it('should return bit', function(done) {
 
-      var app = express();
-      var rate = transfer({
-        data: 'bit',
-        response: false
-      });
-      app.get('/', function(req, res) {
+    describe('nanosecond', function() {
 
-        var start = process.hrtime();
-        res.send('ok');
-        finished(req, function(err) {
+      it('should return Byte', function(done) {
 
-          if (!err) {
-            assert.ok(/ bit/.test(rate(req, res, start)));
-            done();
-          }
+        var app = express();
+        var rate = transfer({
+          data: 'Byte',
+          time: 'nanosecond',
+          response: false
+        });
+        app.get('/', function(req, res) {
+
+          var start = process.hrtime();
+          res.send('ok');
+          finished(req, function(err) {
+
+            if (!err) {
+              assert.ok(/ Byte\/ns/.test(rate(req, res, start)));
+              done();
+            }
+          });
+        });
+        request(app).get('/').expect(200).end(function(err, res) {
+
+          assert.ifError(err);
         });
       });
-      request(app).get('/').expect(200).end(function(err, res) {
+      it('should return KB', function(done) {
 
-        assert.ifError(err);
-      });
-    });
-    it('should return Kb', function(done) {
+        var app = express();
+        var rate = transfer({
+          data: 'KB',
+          time: 'nanosecond',
+          response: false
+        });
+        app.get('/', function(req, res) {
 
-      var app = express();
-      var rate = transfer({
-        data: 'Kb',
-        response: false
-      });
-      app.get('/', function(req, res) {
+          var start = process.hrtime();
+          res.send('ok');
+          finished(req, function(err) {
 
-        var start = process.hrtime();
-        res.send('ok');
-        finished(req, function(err) {
+            if (!err) {
+              assert.ok(/ KB\/ns/.test(rate(req, res, start)));
+              done();
+            }
+          });
+        });
+        request(app).get('/').expect(200).end(function(err, res) {
 
-          if (!err) {
-            assert.ok(/ Kb/.test(rate(req, res, start)));
-            done();
-          }
+          assert.ifError(err);
         });
       });
-      request(app).get('/').expect(200).end(function(err, res) {
+      it('should return MB', function(done) {
 
-        assert.ifError(err);
-      });
-    });
-    it('should return Mb', function(done) {
+        var app = express();
+        var rate = transfer({
+          data: 'MB',
+          time: 'nanosecond',
+          response: false
+        });
+        app.get('/', function(req, res) {
 
-      var app = express();
-      var rate = transfer({
-        data: 'Mb',
-        response: false
-      });
-      app.get('/', function(req, res) {
+          var start = process.hrtime();
+          res.send('ok');
+          finished(req, function(err) {
 
-        var start = process.hrtime();
-        res.send('ok');
-        finished(req, function(err) {
+            if (!err) {
+              assert.ok(/ MB\/ns/.test(rate(req, res, start)));
+              done();
+            }
+          });
+        });
+        request(app).get('/').expect(200).end(function(err, res) {
 
-          if (!err) {
-            assert.ok(/ Mb/.test(rate(req, res, start)));
-            done();
-          }
+          assert.ifError(err);
         });
       });
-      request(app).get('/').expect(200).end(function(err, res) {
+      it('should return bit', function(done) {
 
-        assert.ifError(err);
-      });
-    });
-    it('should return nanosecond', function(done) {
+        var app = express();
+        var rate = transfer({
+          data: 'bit',
+          time: 'nanosecond',
+          response: false
+        });
+        app.get('/', function(req, res) {
 
-      var app = express();
-      var rate = transfer({
-        time: 'nanosecond',
-        response: false
-      });
-      app.get('/', function(req, res) {
+          var start = process.hrtime();
+          res.send('ok');
+          finished(req, function(err) {
 
-        var start = process.hrtime();
-        res.send('ok');
-        finished(req, function(err) {
+            if (!err) {
+              assert.ok(/ bit\/ns/.test(rate(req, res, start)));
+              done();
+            }
+          });
+        });
+        request(app).get('/').expect(200).end(function(err, res) {
 
-          if (!err) {
-            assert.ok(/\/ns/.test(rate(req, res, start)));
-            done();
-          }
+          assert.ifError(err);
         });
       });
-      request(app).get('/').expect(200).end(function(err, res) {
+      it('should return Kb', function(done) {
 
-        assert.ifError(err);
-      });
-    });
-    it('should return millisecond', function(done) {
+        var app = express();
+        var rate = transfer({
+          data: 'Kb',
+          time: 'nanosecond',
+          response: false
+        });
+        app.get('/', function(req, res) {
 
-      var app = express();
-      var rate = transfer({
-        time: 'millisecond',
-        response: false
-      });
-      app.get('/', function(req, res) {
+          var start = process.hrtime();
+          res.send('ok');
+          finished(req, function(err) {
 
-        var start = process.hrtime();
-        res.send('ok');
-        finished(req, function(err) {
+            if (!err) {
+              assert.ok(/ Kbit\/ns/.test(rate(req, res, start)));
+              done();
+            }
+          });
+        });
+        request(app).get('/').expect(200).end(function(err, res) {
 
-          if (!err) {
-            assert.ok(/\/ms/.test(rate(req, res, start)));
-            done();
-          }
+          assert.ifError(err);
         });
       });
-      request(app).get('/').expect(200).end(function(err, res) {
+      it('should return Mb', function(done) {
 
-        assert.ifError(err);
+        var app = express();
+        var rate = transfer({
+          data: 'Mb',
+          time: 'nanosecond',
+          response: false
+        });
+        app.get('/', function(req, res) {
+
+          var start = process.hrtime();
+          res.send('ok');
+          finished(req, function(err) {
+
+            if (!err) {
+              assert.ok(/ Mbit\/ns/.test(rate(req, res, start)));
+              done();
+            }
+          });
+        });
+        request(app).get('/').expect(200).end(function(err, res) {
+
+          assert.ifError(err);
+        });
       });
     });
   });
