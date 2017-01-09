@@ -230,12 +230,12 @@ function transfer(opt) {
     my.out += '/s';
   }
 
-  if (options.response === false) {
-    my.response = false;
-  }
-
   if (options.output === false) {
     my.out = '';
+  }
+
+  if (options.response === false) {
+    my.response = false;
   }
 
   return wrapper(my);

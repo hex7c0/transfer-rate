@@ -35,7 +35,7 @@ describe('chunk', function() {
       finished(res, function(err) {
 
         if (!err) {
-          assert.ok(/^[0-9]*.[0-9]{0,2} KB\/s$/.test(req.transferRate));
+          assert.ok(/^[0-9]*.[0-9]{0,2} KB\/s$$/.test(req.transferRate));
           done();
         }
       });
@@ -91,7 +91,7 @@ describe('chunk', function() {
           finished(res, function(err) {
 
             if (!err) {
-              assert.ok(/ Byte\/s/.test(rate(req, res, start)));
+              assert.ok(/ Byte\/s$/.test(rate(req, res, start)));
               done();
             }
           });
@@ -117,7 +117,7 @@ describe('chunk', function() {
           finished(res, function(err) {
 
             if (!err) {
-              assert.ok(/ KB\/s/.test(rate(req, res, start)));
+              assert.ok(/ KB\/s$/.test(rate(req, res, start)));
               done();
             }
           });
@@ -143,7 +143,7 @@ describe('chunk', function() {
           finished(res, function(err) {
 
             if (!err) {
-              assert.ok(/ MB\/s/.test(rate(req, res, start)));
+              assert.ok(/ MB\/s$/.test(rate(req, res, start)));
               done();
             }
           });
@@ -169,7 +169,7 @@ describe('chunk', function() {
           finished(res, function(err) {
 
             if (!err) {
-              assert.ok(/ bit\/s/.test(rate(req, res, start)));
+              assert.ok(/ bit\/s$/.test(rate(req, res, start)));
               done();
             }
           });
@@ -195,7 +195,7 @@ describe('chunk', function() {
           finished(res, function(err) {
 
             if (!err) {
-              assert.ok(/ Kbit\/s/.test(rate(req, res, start)));
+              assert.ok(/ Kbit\/s$/.test(rate(req, res, start)));
               done();
             }
           });
@@ -221,7 +221,7 @@ describe('chunk', function() {
           finished(res, function(err) {
 
             if (!err) {
-              assert.ok(/ Mbit\/s/.test(rate(req, res, start)));
+              assert.ok(/ Mbit\/s$/.test(rate(req, res, start)));
               done();
             }
           });
@@ -251,7 +251,7 @@ describe('chunk', function() {
           finished(res, function(err) {
 
             if (!err) {
-              assert.ok(/ Byte\/ms/.test(rate(req, res, start)));
+              assert.ok(/ Byte\/ms$/.test(rate(req, res, start)));
               done();
             }
           });
@@ -277,7 +277,7 @@ describe('chunk', function() {
           finished(res, function(err) {
 
             if (!err) {
-              assert.ok(/ KB\/ms/.test(rate(req, res, start)));
+              assert.ok(/ KB\/ms$/.test(rate(req, res, start)));
               done();
             }
           });
@@ -303,7 +303,7 @@ describe('chunk', function() {
           finished(res, function(err) {
 
             if (!err) {
-              assert.ok(/ MB\/ms/.test(rate(req, res, start)));
+              assert.ok(/ MB\/ms$/.test(rate(req, res, start)));
               done();
             }
           });
@@ -329,7 +329,7 @@ describe('chunk', function() {
           finished(res, function(err) {
 
             if (!err) {
-              assert.ok(/ bit\/ms/.test(rate(req, res, start)));
+              assert.ok(/ bit\/ms$/.test(rate(req, res, start)));
               done();
             }
           });
@@ -355,7 +355,7 @@ describe('chunk', function() {
           finished(res, function(err) {
 
             if (!err) {
-              assert.ok(/ Kbit\/ms/.test(rate(req, res, start)));
+              assert.ok(/ Kbit\/ms$/.test(rate(req, res, start)));
               done();
             }
           });
@@ -381,7 +381,7 @@ describe('chunk', function() {
           finished(res, function(err) {
 
             if (!err) {
-              assert.ok(/ Mbit\/ms/.test(rate(req, res, start)));
+              assert.ok(/ Mbit\/ms$/.test(rate(req, res, start)));
               done();
             }
           });
@@ -411,7 +411,7 @@ describe('chunk', function() {
           finished(res, function(err) {
 
             if (!err) {
-              assert.ok(/ Byte\/ns/.test(rate(req, res, start)));
+              assert.ok(/ Byte\/ns$/.test(rate(req, res, start)));
               done();
             }
           });
@@ -437,7 +437,7 @@ describe('chunk', function() {
           finished(res, function(err) {
 
             if (!err) {
-              assert.ok(/ KB\/ns/.test(rate(req, res, start)));
+              assert.ok(/ KB\/ns$/.test(rate(req, res, start)));
               done();
             }
           });
@@ -463,7 +463,7 @@ describe('chunk', function() {
           finished(res, function(err) {
 
             if (!err) {
-              assert.ok(/ MB\/ns/.test(rate(req, res, start)));
+              assert.ok(/ MB\/ns$/.test(rate(req, res, start)));
               done();
             }
           });
@@ -489,7 +489,7 @@ describe('chunk', function() {
           finished(res, function(err) {
 
             if (!err) {
-              assert.ok(/ bit\/ns/.test(rate(req, res, start)));
+              assert.ok(/ bit\/ns$/.test(rate(req, res, start)));
               done();
             }
           });
@@ -515,7 +515,7 @@ describe('chunk', function() {
           finished(res, function(err) {
 
             if (!err) {
-              assert.ok(/ Kbit\/ns/.test(rate(req, res, start)));
+              assert.ok(/ Kbit\/ns$/.test(rate(req, res, start)));
               done();
             }
           });
@@ -541,7 +541,7 @@ describe('chunk', function() {
           finished(res, function(err) {
 
             if (!err) {
-              assert.ok(/ Mbit\/ns/.test(rate(req, res, start)));
+              assert.ok(/ Mbit\/ns$/.test(rate(req, res, start)));
               done();
             }
           });
@@ -575,7 +575,7 @@ describe('chunk', function() {
           finished(req, function(err) {
 
             if (!err) {
-              assert.ok(/ Byte\/s/.test(rate(req, res, start)));
+              assert.ok(/ Byte\/s$/.test(rate(req, res, start)));
               done();
             }
           });
@@ -602,7 +602,7 @@ describe('chunk', function() {
           finished(req, function(err) {
 
             if (!err) {
-              assert.ok(/ KB\/s/.test(rate(req, res, start)));
+              assert.ok(/ KB\/s$/.test(rate(req, res, start)));
               done();
             }
           });
@@ -629,7 +629,7 @@ describe('chunk', function() {
           finished(req, function(err) {
 
             if (!err) {
-              assert.ok(/ MB\/s/.test(rate(req, res, start)));
+              assert.ok(/ MB\/s$/.test(rate(req, res, start)));
               done();
             }
           });
@@ -656,7 +656,7 @@ describe('chunk', function() {
           finished(req, function(err) {
 
             if (!err) {
-              assert.ok(/ bit\/s/.test(rate(req, res, start)));
+              assert.ok(/ bit\/s$/.test(rate(req, res, start)));
               done();
             }
           });
@@ -683,7 +683,7 @@ describe('chunk', function() {
           finished(req, function(err) {
 
             if (!err) {
-              assert.ok(/ Kbit\/s/.test(rate(req, res, start)));
+              assert.ok(/ Kbit\/s$/.test(rate(req, res, start)));
               done();
             }
           });
@@ -710,7 +710,7 @@ describe('chunk', function() {
           finished(req, function(err) {
 
             if (!err) {
-              assert.ok(/ Mbit\/s/.test(rate(req, res, start)));
+              assert.ok(/ Mbit\/s$/.test(rate(req, res, start)));
               done();
             }
           });
@@ -741,7 +741,7 @@ describe('chunk', function() {
           finished(req, function(err) {
 
             if (!err) {
-              assert.ok(/ Byte\/ms/.test(rate(req, res, start)));
+              assert.ok(/ Byte\/ms$/.test(rate(req, res, start)));
               done();
             }
           });
@@ -768,7 +768,7 @@ describe('chunk', function() {
           finished(req, function(err) {
 
             if (!err) {
-              assert.ok(/ KB\/ms/.test(rate(req, res, start)));
+              assert.ok(/ KB\/ms$/.test(rate(req, res, start)));
               done();
             }
           });
@@ -795,7 +795,7 @@ describe('chunk', function() {
           finished(req, function(err) {
 
             if (!err) {
-              assert.ok(/ MB\/ms/.test(rate(req, res, start)));
+              assert.ok(/ MB\/ms$/.test(rate(req, res, start)));
               done();
             }
           });
@@ -822,7 +822,7 @@ describe('chunk', function() {
           finished(req, function(err) {
 
             if (!err) {
-              assert.ok(/ bit\/ms/.test(rate(req, res, start)));
+              assert.ok(/ bit\/ms$/.test(rate(req, res, start)));
               done();
             }
           });
@@ -849,7 +849,7 @@ describe('chunk', function() {
           finished(req, function(err) {
 
             if (!err) {
-              assert.ok(/ Kbit\/ms/.test(rate(req, res, start)));
+              assert.ok(/ Kbit\/ms$/.test(rate(req, res, start)));
               done();
             }
           });
@@ -876,7 +876,7 @@ describe('chunk', function() {
           finished(req, function(err) {
 
             if (!err) {
-              assert.ok(/ Mbit\/ms/.test(rate(req, res, start)));
+              assert.ok(/ Mbit\/ms$/.test(rate(req, res, start)));
               done();
             }
           });
@@ -907,7 +907,7 @@ describe('chunk', function() {
           finished(req, function(err) {
 
             if (!err) {
-              assert.ok(/ Byte\/ns/.test(rate(req, res, start)));
+              assert.ok(/ Byte\/ns$/.test(rate(req, res, start)));
               done();
             }
           });
@@ -934,7 +934,7 @@ describe('chunk', function() {
           finished(req, function(err) {
 
             if (!err) {
-              assert.ok(/ KB\/ns/.test(rate(req, res, start)));
+              assert.ok(/ KB\/ns$/.test(rate(req, res, start)));
               done();
             }
           });
@@ -961,7 +961,7 @@ describe('chunk', function() {
           finished(req, function(err) {
 
             if (!err) {
-              assert.ok(/ MB\/ns/.test(rate(req, res, start)));
+              assert.ok(/ MB\/ns$/.test(rate(req, res, start)));
               done();
             }
           });
@@ -988,7 +988,7 @@ describe('chunk', function() {
           finished(req, function(err) {
 
             if (!err) {
-              assert.ok(/ bit\/ns/.test(rate(req, res, start)));
+              assert.ok(/ bit\/ns$/.test(rate(req, res, start)));
               done();
             }
           });
@@ -1015,7 +1015,7 @@ describe('chunk', function() {
           finished(req, function(err) {
 
             if (!err) {
-              assert.ok(/ Kbit\/ns/.test(rate(req, res, start)));
+              assert.ok(/ Kbit\/ns$/.test(rate(req, res, start)));
               done();
             }
           });
@@ -1042,7 +1042,7 @@ describe('chunk', function() {
           finished(req, function(err) {
 
             if (!err) {
-              assert.ok(/ Mbit\/ns/.test(rate(req, res, start)));
+              assert.ok(/ Mbit\/ns$/.test(rate(req, res, start)));
               done();
             }
           });
