@@ -1,6 +1,6 @@
 'use strict';
 /**
- * @file express example
+ * @file express with response example
  * @module transfer-rate
  * @subpackage examples
  * @version 0.0.1
@@ -21,10 +21,11 @@ var rate = transfer();
 app.get('/', function(req, res) {
 
   var start = process.hrtime();
-  res.send('ok');
-  rate(req, start);
 
-  console.log(req.transferRate); // show transferRate to console
+  res.send('ok');
+  rate(req, res, start);
+
+  console.log(res.transferRate); // show transferRate to console
 
 }).listen(3000);
 console.log('starting "hello world" on port 3000');
