@@ -1,7 +1,7 @@
 # [transfer-rate](https://github.com/hex7c0/transfer-rate)
 
 [![NPM version](https://img.shields.io/npm/v/transfer-rate.svg)](https://www.npmjs.com/package/transfer-rate)
-[![Linux Status](https://img.shields.io/travis/hex7c0/transfer-rate.svg?label=linux)](https://travis-ci.org/hex7c0/transfer-rate)
+[![Linux Status](https://img.shields.io/travis/hex7c0/transfer-rate.svg?label=linux-osx)](https://travis-ci.org/hex7c0/transfer-rate)
 [![Windows Status](https://img.shields.io/appveyor/ci/hex7c0/transfer-rate.svg?label=windows)](https://ci.appveyor.com/project/hex7c0/transfer-rate)
 [![Dependency Status](https://img.shields.io/david/hex7c0/transfer-rate.svg)](https://david-dm.org/hex7c0/transfer-rate)
 [![Coveralls](https://img.shields.io/coveralls/hex7c0/transfer-rate.svg)](https://coveralls.io/r/hex7c0/transfer-rate)
@@ -34,13 +34,13 @@ app.get('/', function(req, res) {
 
   var start = process.hrtime();
   res.send('ok');
-  console.log(transfer(req, start));
+  console.log(transfer(req, res, start));
 });
 ```
 
 ### Methods
 
-Calculation is store inside `req` **Object** and returned from function.
+Calculation is store inside `res` and `req` **Object** and returned from function.
 ```js
 req.transferRate
 ```
@@ -52,13 +52,17 @@ req.transferRate
  - `data` **String** Accepted string are related to http://en.wikipedia.org/wiki/Data_rate_units `[Byte, KB, MB, bit, Kb, Mb]` *(default "KB")*
  - `time` - **String** Accepted string for calculate ratio are `[nanosecond, millisecond, second]` *(default "second")*
  - `response` - **Boolean** Flag for calculate transfer rate of response(true) or request(false) *(default "response")*
- - `output` - **Boolean** Flag for display(true) extra information like `KB/s` or only data(false) *(default "display")*
+ - `output` - **Boolean** Flag for display(true) extra information like `KB/s` or only data(false) as string *(default "display")*
 
-### rate(req, start) // calculator
+### rate(req, res, start) // calculator
 
 #### req
 
  - `req` - **Object** Client request object *(default "required")*
+
+#### res
+
+ - `res` - **Object** Client response object *(default "required")*
 
 #### start
 
@@ -68,6 +72,6 @@ req.transferRate
 
 Take a look at my [examples](examples)
 
-For chunked data, wait for a fix with event emitter https://github.com/hex7c0/transfer-rate/tree/master/examples/chunk.js
+For chunked data, wait for a fix with event emitter https://github.com/hex7c0/transfer-rate/tree/master/examples/chunk_res.js or use [on-finished](https://github.com/jshttp/on-finished) module
 
 ### [License GPLv3](LICENSE)

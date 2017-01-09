@@ -1,3 +1,11 @@
+v2.0.0 / 2017-01-09
+==================
+
+  * Tested against `node`@7
+  * Remove support for `node`@0
+  * Using `on-finished`@2.3.0
+  * Require `res` argument
+
 v1.2.0 / 2016-09-12
 ==================
 
