@@ -21,6 +21,7 @@
 function wrapper(my) {
 
   var finished = require('on-finished');
+
   var __denominator = my.denominator;
   var __byte = my.byte;
   var __time = my.time;
@@ -37,9 +38,12 @@ function wrapper(my) {
   function response(socket, start) {
 
     var diff = process.hrtime(start);
-    diff = diff[0] * 1e9 + diff[1]; // nanosecond
-    var data = (socket._bytesDispatched * __byte) / __denominator;
-    return (data / (diff / __time)).toFixed(2) + __out;
+    var nanosecond = diff[0] * 1e9 + diff[1];
+    var bytes = socket.bytesWritten - ~~socket.transferRateBytesWritten;
+    var data = (bytes * __byte) / __denominator;
+
+    socket.transferRateBytesWritten = socket.bytesWritten; // keep-alive socket
+    return (data / (nanosecond / __time)).toFixed(2) + __out;
   }
 
   /**
@@ -53,9 +57,12 @@ function wrapper(my) {
   function request(socket, start) {
 
     var diff = process.hrtime(start);
-    diff = diff[0] * 1e9 + diff[1]; // nanosecond
-    var data = (socket.bytesRead * __byte) / __denominator;
-    return (data / (diff / __time)).toFixed(2) + __out;
+    var nanosecond = diff[0] * 1e9 + diff[1];
+    var bytes = socket.bytesRead - ~~socket.transferRateBytesRead;
+    var data = (bytes * __byte) / __denominator;
+
+    socket.transferRateBytesRead = socket.bytesRead; // keep-alive socket
+    return (data / (nanosecond / __time)).toFixed(2) + __out;
   }
 
   if (my.response) {
@@ -83,7 +90,7 @@ function wrapper(my) {
        * single request
        */
       if (finished.isFinished(res)) {
-        var socket = res.socket || res.req.client;
+        var socket = res.socket || req.socket;
         var data = response(socket, start);
         req.transferRate = res.transferRate = data;
         return data;
@@ -92,22 +99,14 @@ function wrapper(my) {
       /*
        * chunk
        */
-      /**
-       * finish callback
-       * 
-       * @function finish
-       */
-      function finish(err, res) {
+      finished(res, function(err, res) {
 
         if (!err) {
-          var socket = res.req.client;
+          var socket = res.req.socket;
           var data = response(socket, start);
           req.transferRate = res.transferRate = data;
-          return data;
         }
-      }
-
-      finished(res, finish);
+      });
     };
 
   } else {
@@ -144,22 +143,14 @@ function wrapper(my) {
       /*
        * chunk
        */
-      /**
-       * finish callback
-       * 
-       * @function finish
-       */
-      function finish(err, req) {
+      finished(req, function(err, req) {
 
         if (!err) {
-          var socket = req.client._handle || req.client.server._handle;
+          var socket = req.socket;
           var data = request(socket, start);
           req.transferRate = res.transferRate = data;
-          return data;
         }
-      }
-
-      finished(req, finish);
+      });
     };
 
   }
