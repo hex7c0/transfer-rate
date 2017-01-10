@@ -14,9 +14,12 @@
  */
 var transfer = require('..'); // use require('transfer-rate') instead
 var http = require('http');
+var finished = require('on-finished');
 
 // customization
-var rate = transfer();
+var rate = transfer({
+  response: false
+});
 
 // routing
 var server = http.createServer(function(req, res) {
@@ -29,7 +32,11 @@ var server = http.createServer(function(req, res) {
   res.end('ok');
   rate(req, res, start);
 
-  console.log(req.transferRate); // show transferRate to console
+  finished(req, function(err) {
 
+    if (!err) {
+      console.log(req.transferRate); // show transferRate to console
+    }
+  });
 }).listen(3000);
 console.log('starting "hello world" on port 3000');

@@ -32,7 +32,7 @@ app.get('/', function(req, res) {
   finished(req, function(err) {
 
     if (!err) {
-      console.log(req.transferRate);
+      console.log(req.transferRate); // show transferRate to console
     }
   });
 }).listen(3000);
