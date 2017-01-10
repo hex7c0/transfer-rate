@@ -1,3 +1,8 @@
+v2.0.1 / 2017-01-10
+==================
+
+  * Using https://nodejs.org/api/net.html#net_socket_bytesread and https://nodejs.org/api/net.html#net_socket_byteswritten
+
 v2.0.0 / 2017-01-09
 ==================
 
