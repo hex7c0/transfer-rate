@@ -38,12 +38,12 @@ function wrapper(my) {
   function response(socket, start) {
 
     var diff = process.hrtime(start);
-    var nanosecond = diff[0] * 1e9 + diff[1];
+    var nanoseconds = diff[0] * 1e9 + diff[1];
     var bytes = socket.bytesWritten - ~~socket.transferRateBytesWritten;
     var data = (bytes * __byte) / __denominator;
 
     socket.transferRateBytesWritten = socket.bytesWritten; // keep-alive socket
-    return (data / (nanosecond / __time)).toFixed(2) + __out;
+    return (data / (nanoseconds / __time)).toFixed(2) + __out;
   }
 
   /**
@@ -57,12 +57,12 @@ function wrapper(my) {
   function request(socket, start) {
 
     var diff = process.hrtime(start);
-    var nanosecond = diff[0] * 1e9 + diff[1];
+    var nanoseconds = diff[0] * 1e9 + diff[1];
     var bytes = socket.bytesRead - ~~socket.transferRateBytesRead;
     var data = (bytes * __byte) / __denominator;
 
     socket.transferRateBytesRead = socket.bytesRead; // keep-alive socket
-    return (data / (nanosecond / __time)).toFixed(2) + __out;
+    return (data / (nanoseconds / __time)).toFixed(2) + __out;
   }
 
   if (my.response) {
@@ -78,11 +78,11 @@ function wrapper(my) {
      */
     return function rate(req, res, start) {
 
-      if (!req || typeof req !== 'object') {
+      if (typeof req !== 'object') {
         throw new TypeError('req required');
-      } else if (!res || typeof res !== 'object') {
+      } else if (typeof res !== 'object') {
         throw new TypeError('res required');
-      } else if (!start || Array.isArray(start) === false) {
+      } else if (Array.isArray(start) === false) {
         throw new TypeError('start required');
       }
 
@@ -122,11 +122,11 @@ function wrapper(my) {
      */
     return function rate(req, res, start) {
 
-      if (!req || typeof req !== 'object') {
+      if (typeof req !== 'object') {
         throw new TypeError('req required');
-      } else if (!res || typeof res !== 'object') {
+      } else if (typeof res !== 'object') {
         throw new TypeError('res required');
-      } else if (!start || Array.isArray(start) === false) {
+      } else if (Array.isArray(start) === false) {
         throw new TypeError('start required');
       }
 
