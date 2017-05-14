@@ -74,4 +74,4 @@ Take a look at my [examples](examples)
 
 For chunked data, wait for a fix with event emitter https://github.com/hex7c0/transfer-rate/tree/master/examples/chunk_res.js or use [on-finished](https://github.com/jshttp/on-finished) module
 
-### [License GPLv3](LICENSE)
+### [License Apache2](LICENSE)
