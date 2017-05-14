@@ -2,7 +2,7 @@
 /**
  * @file transfer-rate main
  * @module transfer-rate
- * @version 2.0.0
+ * @version 2.1.0
  * @author hex7c0 <hex7c0@gmail.com>
  * @copyright hex7c0 2017
  * @license GPLv3

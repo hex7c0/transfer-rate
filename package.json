@@ -1,5 +1,5 @@
 {
-  "version": "2.0.1",
+  "version": "2.1.0",
   "name": "transfer-rate",
   "description": "calculate transfer-rate of request/response",
   "keywords": [
@@ -45,5 +45,5 @@
     "test": "mocha --bail --check-leaks",
     "test-cov": "istanbul cover node_modules/mocha/bin/_mocha --report lcovonly"
   },
-  "license": "GPL-3.0"
+  "license": "Apache-2.0"
 }
