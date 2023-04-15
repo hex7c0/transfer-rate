@@ -34,7 +34,7 @@
     "grunt-endline": "~0.7",
     "grunt-safer-regex": "~0.1",
     "istanbul": "~0.4",
-    "mocha": "~3.5",
+    "mocha": "~10.2",
     "supertest": "~3.0"
   },
   "engines": {
